@@ -84,7 +84,8 @@ function percentCovered(specialty) {
 
 function amountCovered(personObj) {	
 	personObj.amountPaidOut = Math.round(percentCovered(personObj.visitType) * personObj.visitCost);
-	return("Paid out $" + personObj.amountPaidOut +  " for " + personObj.patientName + ".");
+	return ("Paid out $" + personObj.amountPaidOut +  " for " + personObj.patientName + ".");
+	
 }
 
 
@@ -98,8 +99,29 @@ function totalPaid(array) {
 return totalPaidOut;
 }
 
-//loop through initialList, and console.log amountCovered for each patient.
-for(var i = 0; i < initialList.length; i++) {
-	console.log(amountCovered(initialList[i]));
+//function to append to the DOM takes in a string and outputs to DOM
+
+var newEl, newText, position;
+position = document.getElementById('content');
+
+function appendToDom(myString) {
+	newEl = document.createElement('li');
+	newText = document.createTextNode(myString);
+	newEl.appendChild(newText);
+	position.appendChild(newEl);
 }
-console.log("The total amount our company paid out is $" + totalPaid(initialList) + ".");
+
+var amountCoveredMessage;
+for(var i = 0; i < initialList.length; i++) {
+
+	amountCoveredMessage = amountCovered(initialList[i]);
+	appendToDom(amountCoveredMessage);
+	console.log(amountCoveredMessage);
+}
+
+var totalAmountPaidMessage = "The total amount our company paid out is $" + totalPaid(initialList) + ".";
+console.log(totalAmountPaidMessage);
+
+appendToDom(totalAmountPaidMessage);
+
+

@@ -1,0 +1,25 @@
+body {
+	padding: 10px;
+	background-color: #fdf5e6;
+}
+
+section {
+	margin-top: 100px;
+	border: 3px solid black;
+	border-radius: 10px;
+	text-align: center;
+	
+}
+
+li {
+	list-style-type: none;
+}
+
+li:last-child {
+	font-size: 40px;
+}
+
+ul>li:nth-child(odd){
+    font-weight:bold;
+}​
+
